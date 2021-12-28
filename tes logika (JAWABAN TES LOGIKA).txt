@@ -1,0 +1,99 @@
+ ====== Jawaban tes logika =====
+No. 1 ;
+
+function arrCacah(n){
+	let cacah = [];
+  for (let i = 1; cacah.length < n; i++) {
+  	let mod3 = i % 3;
+    let mod7 = i % 7;
+  	if( mod3 == 0 && mod7 == 0 ){
+    	cacah.push('Z');
+    }
+    else if(mod3 == 0 || mod7 == 0){
+    	cacah.push(i);
+    }
+  }
+ return cacah;
+}
+
+
+No. 2
+
+function words(word){
+  let a = word.replace(/[.,]/g," . ")
+  a = a.split(" ");
+  let temp = "";
+  let wordsArr = [];
+  a.forEach( x => {
+  	x = x.toLowerCase();
+    if(x=="sang"){
+   		temp = temp+x;
+    }
+    else if(temp=="sang" && x=="gajah"){
+    	wordsArr.push(temp+" "+x);
+    }
+    else if(x=="serigala"){
+        	temp = "";
+        	wordsArr.push(x);
+		}
+    else if(x=="harimau"){
+        	temp = "";
+        	wordsArr.push(x);
+    }
+    else{
+    	temp = "";
+    }
+  })
+    	return wordsArr.join(" - ")
+}
+
+No. 3
+
+var re = new RegExp(/(?=^.{8,32}$)(?=(?:.*?\d){1})(?=.*[a-z])(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%*()_+^&]*$/);
+var test1 = '1234567',      //  less than 8 characters
+    test2 = 'aaaaaaaa',     //  no  number & no special character
+    test3 = 'aaaaaaa1',     //  no special character
+    test4 = 'aaaAaa#1',     //  satisfied
+    test5 = 'abcdefghigklmnopqrstuvwxyz1234567890332123';  //  more than 32 characters
+
+re.test(test1);     //  FALSE
+re.test(test2);     //  FALSE
+re.test(test3);     //  FALSE
+re.test(test4);     //  TRUE
+re.test(test5);     //  FALSE
+
+No. 4
+
+function minFrArr(a){
+	
+    var w = a.length - 2;
+    var l = a.length - 1;
+    var changed = 1;
+
+    do{
+        changed = 0;
+
+        for(let i = 0; i <= w ; i++){
+            if (a[i] > a[i+1]){
+                let temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+                changed = 1;
+            }
+        }
+    }
+    while (changed == 1);
+
+    let min = a[0];
+    let max = a[l];
+    let result = 0;
+
+    for (let o = min; o < max; o++) {
+        if (!a.includes(o)){
+        result = o
+        return result
+        break;
+        }
+    }
+    return result
+}
